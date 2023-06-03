@@ -35,11 +35,6 @@ mongoose.connect(process.env.MONGO_URI, {
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors(corsOptions));
-app.use((req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
-    res.setHeader('Access-Control-Allow-Credentials', 'true');
-    next();
-});
 
 // routes path and redirecting...
 const routePath = '/api/v1';

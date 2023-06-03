@@ -29,7 +29,7 @@ const verifyUser = (req, res, next) => {
 
 const verifyAdmin = (req, res, next) => {
     verifyToken(req, res, () => {
-        if (req.headers["user-role"] === 'admin') {
+        if (req.user.role === 'admin') {
             next();
         } else {
             res.status(401).send('User not authorized');
