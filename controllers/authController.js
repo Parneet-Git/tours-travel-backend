@@ -50,7 +50,7 @@ const loginUser = async (req, res) => {
                 const jwtToken = jwt.sign({ id: user._id, role: user.role }, process.env.JWT_SECRET_KEY, { expiresIn: "15d" });
 
                 // set token in browser cookies & send response to client
-                res.cookie('accessToken', jwtToken, { httpOnly: true, sameSite: 'none', expires: (new Date(Date.now() + 15 * 24 * 60 * 60 * 1000) )})
+                res.cookie('accessToken', jwtToken, { httpOnly: true, sameSite: 'none', secure: false, expires: (new Date(Date.now() + 15 * 24 * 60 * 60 * 1000) )})
                     .status(200)
                     .send({ success: true, jwtToken, data: { ...rest } });
             }
